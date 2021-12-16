@@ -12,7 +12,7 @@ export const props = {
         medium: '#f14e32',
       },
       green: {
-        medium: '#13b811',
+        medium: '#68D99A',
       },
       white: {
         normal: '#FFFFFF',
@@ -27,7 +27,7 @@ export const props = {
       tiny: '0.7rem',
       small: '0.9rem',
       default: '1.1rem',
-      medium: '1.5rem',
+      medium: '1.25rem',
       large: '2.0rem',
       xLarge: '2.5rem',
       xxLarge: '3.5rem',

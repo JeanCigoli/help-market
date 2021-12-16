@@ -33,6 +33,7 @@
     "no-prototype-builtins": "off",
     "no-unused-vars": "off",
     "react/no-array-index-key": "off",
-    "no-return-assign": "off"
+    "no-return-assign": "off",
+    "react/no-children-prop": "off"
   }
 }
