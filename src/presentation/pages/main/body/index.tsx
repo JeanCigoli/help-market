@@ -8,12 +8,14 @@ import { ProductForm } from '../../../../domain/forms';
 import { productSchema } from '../../../../validation/forms';
 import { Input } from '../../../components';
 import { BodyParams } from '../../../../domain/pages';
+import { monetaryValueMask, numberMask } from '../../../../utils/mask';
 
 const BodyComponent: React.FC<BodyParams> = ({ createProduct }) => {
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<ProductForm>({
     resolver: yupResolver(productSchema),
@@ -22,7 +24,7 @@ const BodyComponent: React.FC<BodyParams> = ({ createProduct }) => {
   const onSubmit = (params: ProductForm) => {
     createProduct({
       name: params.name,
-      value: +params.value,
+      value: +params.value.replace(',', '.'),
       quantity: +params.quantity,
     });
     reset();
@@ -49,6 +51,9 @@ const BodyComponent: React.FC<BodyParams> = ({ createProduct }) => {
               placeholder="R$"
               {...register('value')}
               error={errors.value}
+              onChange={(event: any) =>
+                setValue('value', monetaryValueMask(event.target.value))
+              }
             />
 
             <Input
@@ -57,6 +62,9 @@ const BodyComponent: React.FC<BodyParams> = ({ createProduct }) => {
               placeholder="Em un. ou kg."
               {...register('quantity')}
               error={errors.quantity}
+              onChange={(event: any) =>
+                setValue('quantity', numberMask(event.target.value))
+              }
             />
           </Body.Flex>
         </div>

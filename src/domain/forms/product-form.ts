@@ -1,3 +1,5 @@
-import { Product } from '../entities';
-
-export type ProductForm = Omit<Product, 'id'>;
+export type ProductForm = {
+  quantity: string;
+  value: string;
+  name: string;
+};
